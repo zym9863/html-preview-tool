@@ -7,6 +7,11 @@
     <meta name="theme-color" content="#2c3e50">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="HTML Preview Tool">
+    <meta name="apple-mobile-web-app-title" content="HTML Preview Tool">
+    <meta name="msapplication-TileImage" content="./image_fx.jpg">
+    <meta name="msapplication-TileColor" content="#2c3e50">
     <title>HTML预览工具</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
@@ -48,12 +53,38 @@
                 navigator.serviceWorker.register('./sw.js')
                     .then(registration => {
                         console.log('Service Worker registered with scope:', registration.scope);
+
+                        // Check for updates to the Service Worker
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            console.log('Service Worker update found!');
+
+                            newWorker.addEventListener('statechange', () => {
+                                console.log('Service Worker state changed:', newWorker.state);
+                            });
+                        });
                     })
                     .catch(error => {
                         console.error('Service Worker registration failed:', error);
                     });
+
+                // Handle Service Worker updates
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    console.log('Service Worker controller changed');
+                });
             });
         }
+
+        // Add to home screen prompt handling
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            // Prevent the mini-infobar from appearing on mobile
+            e.preventDefault();
+            // Stash the event so it can be triggered later
+            deferredPrompt = e;
+            // Optionally, show your own "Add to Home Screen" button here
+            console.log('App can be installed, showing install prompt');
+        });
     </script>
 </body>
 </html>
