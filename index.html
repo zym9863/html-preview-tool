@@ -3,28 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple yet powerful HTML live preview tool">
-    <meta name="theme-color" content="#2c3e50">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="HTML Preview Tool">
-    <meta name="apple-mobile-web-app-title" content="HTML Preview Tool">
-    <meta name="msapplication-TileImage" content="./image_fx.jpg">
-    <meta name="msapplication-TileColor" content="#2c3e50">
     <title>HTML预览工具</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css">
-    <link rel="manifest" href="./manifest.json">
-    <link rel="icon" href="./image_fx.jpg" type="image/jpeg">
-    <link rel="apple-touch-icon" href="./image_fx.jpg">
 </head>
 <body>
     <header>
         <h1>HTML预览工具</h1>
     </header>
-
+    
     <main>
         <div class="editor-container">
             <div class="editor-wrapper active" id="html-editor-wrapper">
@@ -42,49 +30,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/css/css.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/javascript/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/xml/xml.min.js"></script>
-
+    
     <!-- 自定义脚本 -->
     <script src="./script.js"></script>
-
-    <!-- Service Worker Registration -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./sw.js')
-                    .then(registration => {
-                        console.log('Service Worker registered with scope:', registration.scope);
-
-                        // Check for updates to the Service Worker
-                        registration.addEventListener('updatefound', () => {
-                            const newWorker = registration.installing;
-                            console.log('Service Worker update found!');
-
-                            newWorker.addEventListener('statechange', () => {
-                                console.log('Service Worker state changed:', newWorker.state);
-                            });
-                        });
-                    })
-                    .catch(error => {
-                        console.error('Service Worker registration failed:', error);
-                    });
-
-                // Handle Service Worker updates
-                navigator.serviceWorker.addEventListener('controllerchange', () => {
-                    console.log('Service Worker controller changed');
-                });
-            });
-        }
-
-        // Add to home screen prompt handling
-        let deferredPrompt;
-        window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent the mini-infobar from appearing on mobile
-            e.preventDefault();
-            // Stash the event so it can be triggered later
-            deferredPrompt = e;
-            // Optionally, show your own "Add to Home Screen" button here
-            console.log('App can be installed, showing install prompt');
-        });
-    </script>
 </body>
 </html>

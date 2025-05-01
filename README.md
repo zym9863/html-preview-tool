@@ -11,9 +11,6 @@
 - 响应式设计，支持移动设备
 - 简洁美观的用户界面
 - 基于CodeMirror的代码编辑器
-- 支持PWA（渐进式Web应用）
-- 可离线使用
-- 可安装到桌面或主屏幕
 
 ## 快速开始
 
@@ -41,8 +38,6 @@ cd html-preview-tool
 - CSS3
 - JavaScript
 - CodeMirror编辑器
-- PWA (Progressive Web App)
-- Service Worker
 
 ## 贡献
 

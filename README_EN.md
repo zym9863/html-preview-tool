@@ -11,9 +11,6 @@ A simple yet powerful HTML live preview tool that supports real-time editing and
 - Responsive design, mobile device support
 - Clean and beautiful user interface
 - CodeMirror-based code editor
-- PWA (Progressive Web App) support
-- Offline capability
-- Installable on desktop and mobile home screens
 
 ## Quick Start
 
@@ -41,8 +38,6 @@ cd html-preview-tool
 - CSS3
 - JavaScript
 - CodeMirror Editor
-- PWA (Progressive Web App)
-- Service Worker
 
 ## Contributing
 
