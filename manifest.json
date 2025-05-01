@@ -11,42 +11,42 @@
     {
       "src": "image_fx.jpg",
       "sizes": "72x72",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
       "src": "image_fx.jpg",
       "sizes": "96x96",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
       "src": "image_fx.jpg",
       "sizes": "128x128",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
       "src": "image_fx.jpg",
       "sizes": "144x144",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
       "src": "image_fx.jpg",
       "sizes": "152x152",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
       "src": "image_fx.jpg",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
       "src": "image_fx.jpg",
       "sizes": "384x384",
-      "type": "image/png"
+      "type": "image/jpeg"
     },
     {
       "src": "image_fx.jpg",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/jpeg"
     }
   ]
 }
