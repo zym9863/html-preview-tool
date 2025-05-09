@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const html = htmlEditor.getValue();
         
         // 创建一个blob对象，用于在新窗口中打开
-        const blob = new Blob([html], { type: 'text/html' });
+        const blob = new Blob([html], { type: 'text/html;charset=UTF-8' });
         const url = URL.createObjectURL(blob);
         
         // 在新窗口中打开
