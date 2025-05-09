@@ -31,6 +31,23 @@ document.addEventListener('DOMContentLoaded', function() {
         previewDocument.close();
     }
 
+    // 在新窗口打开预览功能
+    document.getElementById('open-in-new-window').addEventListener('click', function() {
+        const html = htmlEditor.getValue();
+        
+        // 创建一个blob对象，用于在新窗口中打开
+        const blob = new Blob([html], { type: 'text/html' });
+        const url = URL.createObjectURL(blob);
+        
+        // 在新窗口中打开
+        window.open(url, '_blank');
+        
+        // 清理创建的URL对象（延迟执行以确保新窗口已经加载完成）
+        setTimeout(function() {
+            URL.revokeObjectURL(url);
+        }, 1000);
+    });
+
     // 监听编辑器变化
     htmlEditor.on('change', updatePreview);
 
