@@ -18,22 +18,54 @@
 <body>
     <header>
         <h1>HTML预览工具</h1>
-        <button id="open-in-new-window" title="在新窗口打开预览">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                <polyline points="15 3 21 3 21 9"></polyline>
-                <line x1="10" y1="14" x2="21" y2="3"></line>
-            </svg>
-            <span>新窗口打开</span>
-        </button>
+        <div class="header-controls">
+            <div class="mode-selector">
+                <button id="html-mode" class="mode-btn active" data-mode="html">HTML模式</button>
+                <button id="multi-mode" class="mode-btn" data-mode="multi">HTML+CSS+JS模式</button>
+            </div>
+            <button id="open-in-new-window" title="在新窗口打开预览">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                <span>新窗口打开</span>
+            </button>
+        </div>
     </header>
 
     <main>
-        <div class="editor-container">
+        <!-- HTML模式的编辑器容器 -->
+        <div class="editor-container" id="html-mode-container">
             <div class="editor-wrapper active" id="html-editor-wrapper">
                 <textarea id="html-editor"></textarea>
             </div>
         </div>
+
+        <!-- 多模式的编辑器容器 -->
+        <div class="multi-editor-container" id="multi-mode-container" style="display: none;">
+            <div class="editor-grid">
+                <div class="editor-section">
+                    <div class="editor-label">HTML</div>
+                    <div class="editor-wrapper">
+                        <textarea id="multi-html-editor"></textarea>
+                    </div>
+                </div>
+                <div class="editor-section">
+                    <div class="editor-label">CSS</div>
+                    <div class="editor-wrapper">
+                        <textarea id="css-editor"></textarea>
+                    </div>
+                </div>
+                <div class="editor-section">
+                    <div class="editor-label">JavaScript</div>
+                    <div class="editor-wrapper">
+                        <textarea id="js-editor"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="preview-container">
             <iframe id="preview-frame" title="预览窗口"></iframe>
         </div>

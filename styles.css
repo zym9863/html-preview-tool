@@ -37,6 +37,43 @@ header h1 {
     font-size: 1.8rem;
 }
 
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mode-selector {
+    display: flex;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.mode-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: #2c3e50;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.mode-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.mode-btn.active {
+    background: rgba(44, 62, 80, 0.8);
+    color: white;
+    box-shadow: 0 2px 8px rgba(44, 62, 80, 0.3);
+}
+
 #open-in-new-window {
     background: rgba(44, 62, 80, 0.8);
     color: white;
@@ -63,14 +100,13 @@ header h1 {
     height: 16px;
 }
 
-/* 移除标签切换相关样式 */
-
 main {
     display: flex;
     flex: 1;
     overflow: hidden;
 }
 
+/* HTML模式的编辑器容器 */
 .editor-container {
     flex: 1;
     display: flex;
@@ -86,14 +122,56 @@ main {
     margin: 0 10px 10px 10px;
 }
 
-.editor-wrapper {
-    display: none;
+/* 多模式的编辑器容器 */
+.multi-editor-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px 10px 10px;
+}
+
+.editor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
     height: 100%;
+}
+
+.editor-section {
+    background: rgba(39, 40, 34, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.editor-section:nth-child(3) {
+    grid-column: 1 / 3;
+}
+
+.editor-label {
+    background: rgba(44, 62, 80, 0.8);
+    color: white;
+    padding: 8px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.editor-wrapper {
+    display: flex;
+    flex: 1;
     overflow: hidden;
 }
 
 .editor-wrapper.active {
-    display: block;
+    display: flex;
 }
 
 .preview-container {
@@ -118,7 +196,15 @@ main {
 
 .CodeMirror {
     height: 100% !important;
+    width: 100% !important;
+    min-width: 0;
+    flex: 1;
     font-size: 14px;
+    border-radius: 0 0 15px 15px;
+}
+
+.editor-section .CodeMirror {
+    border-radius: 0 0 15px 15px;
 }
 
 footer {
@@ -141,15 +227,37 @@ footer {
         flex-direction: column;
     }
     
-    .editor-container, .preview-container {
+    .editor-container, 
+    .multi-editor-container,
+    .preview-container {
         flex: none;
         height: 50%;
         margin: 5px 10px;
     }
     
-    .editor-container {
+    .editor-container,
+    .multi-editor-container {
         border-right: none;
         margin-bottom: 5px;
+    }
+
+    .editor-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    .editor-section:nth-child(3) {
+        grid-column: 1;
+    }
+
+    .header-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .mode-selector {
+        flex-direction: column;
+        width: 100%;
     }
 }
 
@@ -159,8 +267,18 @@ footer {
         font-size: 1.4rem;
     }
     
-    .tab-button {
-        padding: 0.4rem 0.8rem;
-        font-size: 0.9rem;
+    .mode-btn, #open-in-new-window {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .header-controls {
+        width: 100%;
+        justify-content: center;
     }
 }
